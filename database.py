@@ -6,12 +6,12 @@ from models import Base
 
 class SqlOrmConnection:
 
-    def __init__(self, user, password, db_name):
+    def __init__(self, user, password, db_name, host):
         self.user = user
         self.password = password
         self.db_name = db_name
 
-        self.host = '127.0.0.1'
+        self.host = host
         self.port = 3306
 
         self.connection = self.get_connection()

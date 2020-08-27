@@ -3,12 +3,16 @@ from models import User, Link
 import telebot
 from database import SqlOrmConnection
 
-db = SqlOrmConnection('root', '', 'bot')
+db = SqlOrmConnection('root', '', 'bot', '127.0.0.1')#'db')
 bot = telebot.TeleBot('1338868375:AAE7QpHzWV4iG8xTcE7FK2nS8InPSU2mhmE')
 
 
 @bot.message_handler(commands=['start'])
 def start(message):
+    if db.session.query(User).get(message.from_user.id):
+        bot.send_message(message.from_user.id, "Your have already used bot.")
+        return
+
     user = User(id=message.from_user.id)
     db.session.add(user)
     db.session.commit()
@@ -16,7 +20,6 @@ def start(message):
 
 @bot.message_handler(commands=['help'])
 def help(message):
-    print(message.from_user.id)
     answer = """
     Bot has 2 options: 
     1. Type /last to see 10 last URLs.
@@ -65,7 +68,7 @@ def send_url(message):
 
     links = db.session.query(Link).filter_by(user_id=message.from_user.id).all()
     if len(links) >= 10:
-        delete_link = db.session.query(Link).filter_by(user_id=message.from_user.id, url=url).first()
+        delete_link = db.session.query(Link).filter_by(user_id=message.from_user.id).first()
         db.session.delete(delete_link)
 
     link = Link(**data)

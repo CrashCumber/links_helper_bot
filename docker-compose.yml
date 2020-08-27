@@ -1,0 +1,27 @@
+version: '2.1'
+
+services:
+    db:
+        image: mysql:latest
+        command: --default-authentication-plugin=mysql_native_password
+        restart: always
+        ports:
+            - "3307:3306"
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_USER: root
+            MYSQL_PASSWORD: root
+            MYSQL_DATABASE: bot
+
+    bot:
+        build: .
+        ports:
+            - "127.0.0.1:5000:5000"
+        depends_on:
+            - db
+        links:
+            - db
+        restart: always
+        entrypoint: bash -c "./wait-for-it.sh db:3306 -t 30  -- python bot.py"
+        command: bash -c "python bot.py"
+
