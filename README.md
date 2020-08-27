@@ -1,14 +1,17 @@
-# TELEGRAM LINK MANAGER BOT
+# TELEGRAM LINK BOT
 ## About
+This bot can shorten your links.
 
-Bot name: LinkManager   
-Link for bot: t.me/itmybotttikBo
+Bot name: ShortenLink   
+Link for bot:  t.me/ShortenLinksManagerBot
 
 It has options:  
 
 - `/help` - see commands.
 - `/last` - 10 last links.
-- `{url}` - shorten url. 
+- `{url}` - url to shorten. 
+- `/start` - first command to start using bot.
+
 If your url is valid bot return error. Otherwise it return warning.  
 
 All links\` and users\` data save in database.Structure your can see in `models.py`
