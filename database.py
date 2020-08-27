@@ -38,7 +38,3 @@ class SqlOrmConnection:
 
         if not self.engine.dialect.has_table(self.engine, 'links'):
             Base.metadata.tables['links'].create(self.engine)
-
-    def execute_query(self, query):
-        res = self.connection.execute(query)
-        return res.getchall()

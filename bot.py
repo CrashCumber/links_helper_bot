@@ -1,11 +1,11 @@
 import requests
 
-from config import TOKEN, DB, MYSQL_USER, MYSQL_PASSWORD, MYSQL_DATABASE
+from config import TOKEN, DB, DB_PASSWORD, DB_NAME, DB_USER
 from models import User, Link
 import telebot
 from database import SqlOrmConnection
 
-db = SqlOrmConnection(MYSQL_USER, MYSQL_PASSWORD, MYSQL_DATABASE, DB)
+db = SqlOrmConnection(DB_USER, DB_PASSWORD, DB_NAME, DB)
 bot = telebot.TeleBot(TOKEN)
 
 
