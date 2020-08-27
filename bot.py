@@ -1,10 +1,12 @@
 import requests
+
+from config import TOKEN, DB, MYSQL_USER, MYSQL_PASSWORD, MYSQL_DATABASE
 from models import User, Link
 import telebot
 from database import SqlOrmConnection
 
-db = SqlOrmConnection('root', '', 'bot', '127.0.0.1')#'db')
-bot = telebot.TeleBot('1338868375:AAE7QpHzWV4iG8xTcE7FK2nS8InPSU2mhmE')
+db = SqlOrmConnection(MYSQL_USER, MYSQL_PASSWORD, MYSQL_DATABASE, DB)
+bot = telebot.TeleBot(TOKEN)
 
 
 @bot.message_handler(commands=['start'])

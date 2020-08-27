@@ -1,2 +1,5 @@
 .idea
 .DS_Store
+config.py
+__pycache__
+bot2.py
