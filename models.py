@@ -9,12 +9,14 @@ Base = declarative_base()
 
 class User(Base):
     __tablename__ = 'users'
+
     id = Column(Integer(), primary_key=True)
     links = relationship('Link', backref='user', lazy=True, order_by="Link.time")
 
 
 class Link(Base):
     __tablename__ = 'links'
+
     id = Column(Integer(), primary_key=True)
     url = Column(String(255))
     short_link = Column(String(255))
