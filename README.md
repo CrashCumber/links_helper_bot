@@ -17,7 +17,7 @@ If your url is valid bot return error. Otherwise it return warning.
 All links\` and users\` data save in database.Structure your can see in `models.py`
  
 ## Build and launch the bot
-#### Токен для бота присылался отдельно в сообщение с ссылкой на проект!
+#### Токен для бота присылался отдельно в сообщении с ссылкой на проект!
 
 ### Using Docker
 
